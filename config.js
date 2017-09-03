@@ -5,7 +5,7 @@ var config = {
     username: "admin",
     password: "admin",
     shellPrompt: '#',
-    timeout: 3500,
+    timeout: 2500,
     debug: true
   }
 }
