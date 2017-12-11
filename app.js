@@ -31,6 +31,18 @@ if (connectCondition) {
     debug
   };
 
-  fs.writeFileSync('./config/index.json', JSON.stringify(newConfig));
-  console.log(chalk.green('Конфигурация изменена...ОК'));
+  const helpCondition = (Object.keys(args).includes('help'));
+
+  if (helpCondition) {
+    console.log('Использование: WIFI [up | down] [--port <number>] [--host <host_value>] [--username <user>] [--password <pass>]');
+    console.log('up       Включить WIFI');
+    console.log('down     Выключить WIFI');
+    console.log('port     Задать порт роутера');
+    console.log('host     Задать адрес роутера');
+    console.log('username Задать пользователя для подключения');
+    console.log('password Задать пароль для подключения');
+  } else {
+    fs.writeFileSync('./config/index.json', JSON.stringify(newConfig));
+    console.log(chalk.green('Конфигурация изменена...ОК'));
+  }
 }
