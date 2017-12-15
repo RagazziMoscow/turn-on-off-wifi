@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 var chalk = require('chalk');
+var path = require('path');
 var WIFI = require('./../lib');
 var fs = require('fs');
 
 const minimist = require('minimist');
-const params = JSON.parse(fs.readFileSync('./config/index.json'));
+const params = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/index.json')));
 
 const args = minimist(process.argv.slice(2));
 const connectCondition = (args['_'][0] == 'down' || args['_'][0] == 'up');
@@ -43,7 +44,7 @@ if (connectCondition) {
     console.log('username Задать пользователя для подключения');
     console.log('password Задать пароль для подключения');
   } else {
-    fs.writeFileSync('./config/index.json', JSON.stringify(newConfig));
+    fs.writeFileSync(path.json(__dirname, '../config/index.json'), JSON.stringify(newConfig));
     console.log(chalk.green('Конфигурация изменена...ОК'));
   }
 }
