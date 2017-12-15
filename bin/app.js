@@ -44,7 +44,7 @@ if (connectCondition) {
     console.log('username Задать пользователя для подключения');
     console.log('password Задать пароль для подключения');
   } else {
-    fs.writeFileSync(path.json(__dirname, '../config/index.json'), JSON.stringify(newConfig));
+    fs.writeFileSync(path.join(__dirname, '../config/index.json'), JSON.stringify(newConfig));
     console.log(chalk.green('Конфигурация изменена...ОК'));
   }
 }
