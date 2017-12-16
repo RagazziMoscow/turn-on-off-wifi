@@ -5,9 +5,19 @@ var path = require('path');
 var WIFI = require('./../lib');
 var fs = require('fs');
 
+const configFilePath = path.join(__dirname, '../config/index.json');
+const params = JSON.parse(fs.readFileSync(configFilePath));
+
 const argv = require('yargs')
   .command('up', 'turn on wifi')
   .command('down', 'turn off wifi')
+  .command('view-config', 'print config options', (yargs) => {}, (argv) => {
+    console.log(chalk.green('Конфигурация подключения:'));
+    console.log(`Хост:         ${params.host}`);
+    console.log(`Порт:         ${params.port}`);
+    console.log(`Пользователь: ${params.username}`);
+    console.log(`Пароль:       ${params.password}`);
+  })
   .command('config', 'write config options', (yargs) => {
     yargs.positional('port', {
       describe: 'a unique number for the port',
@@ -30,7 +40,6 @@ const argv = require('yargs')
       default: 'admin'
     });
   }, (argv) => {
-    const configFilePath = path.join(__dirname, '../config/index.json');
     const host = argv.host;
     const port = argv.port;
     const username = argv.username;
@@ -58,8 +67,6 @@ const argv = require('yargs')
 const commands = argv['_'];
 const connectCondition = (commands.includes('up') || commands.includes('down'));
 if (connectCondition) {
-  const configFilePath = path.join(__dirname, '../config/index.json');
-  const params = JSON.parse(fs.readFileSync(configFilePath));
   var wifi = new WIFI(params);
   wifi.change(argv['_'][0]);
 }
