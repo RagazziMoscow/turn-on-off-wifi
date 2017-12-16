@@ -17,6 +17,7 @@ const argv = require('yargs')
     console.log(`Порт:         ${params.port}`);
     console.log(`Пользователь: ${params.username}`);
     console.log(`Пароль:       ${params.password}`);
+    console.log(`Интерфейс:    ${params.interface}`);
   })
   .command('config', 'write config options', (yargs) => {
     yargs.positional('port', {
@@ -39,11 +40,17 @@ const argv = require('yargs')
       type: 'string',
       default: 'admin'
     });
+    yargs.positional('interface', {
+      describe: 'string implementing wireless interface',
+      type: 'string',
+      default: 'ra0'
+    });
   }, (argv) => {
     const host = argv.host;
     const port = argv.port;
     const username = argv.username;
     const password = argv.password;
+    const interface = argv.interface;
     const shellPrompt = '#';
     const timeout = 2500;
     const debug = true;
@@ -52,6 +59,7 @@ const argv = require('yargs')
       port,
       username,
       password,
+      interface,
       shellPrompt,
       timeout,
       debug

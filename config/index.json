@@ -1,1 +1,1 @@
-{"host":"192.168.1.1","port":23,"username":"admin","password":"admin","shellPrompt":"#","timeout":2500,"debug":true}
+{"host":"192.168.1.1","port":23,"username":"admin","password":"admin","interface":"ra0","shellPrompt":"#","timeout":2500,"debug":true}
