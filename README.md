@@ -8,14 +8,13 @@ $ git clone https://github.com/RagazziMoscow/turn-on-off-wifi.git .
 $ npm install -g .
 ```
 ### Using
-CD into the main project directory and then type node app.js and command you need for turning on/off for WIFI.
-
-wifi-router up           turn on wifi
-wifi-router down         turn off wifi
-wifi-router view-config  print config options
-wifi-router config       write config options
 ```
 wifi-router [up | down] [view-config] [config <host> <port> <username> <password> <interface>]
+
+up           turn on wifi
+down         turn off wifi
+view-config  print config options
+config       write config options
 ```
 
 ### Properties into config/index.json file (By Default)
