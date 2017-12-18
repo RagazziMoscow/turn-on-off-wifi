@@ -1,28 +1,32 @@
 # turn-on-off-wifi
-NodeJS module execiting turn-off/on commands for your WIFI home router
+NodeJS module turning-off/on WIFI on your home router
 ### Install
 ---
 Install with [git](https://git-scm.com/)
-
 ```
-$ git clone https://github.com/RagazziMoscow/turn-on-off-wifi.git
+$ git clone https://github.com/RagazziMoscow/turn-on-off-wifi.git .
+$ npm install -g .
 ```
 ### Using
 CD into the main project directory and then type node app.js and command you need for turning on/off for WIFI.
+
+wifi-router up           turn on wifi
+wifi-router down         turn off wifi
+wifi-router view-config  print config options
+wifi-router config       write config options
 ```
-node app.js [up | down]
+wifi-router [up | down] [view-config] [config <host> <port> <username> <password> <interface>]
 ```
 
-### Properties into app.js
+### Properties into config/index.json file (By Default)
 
 ```javascript
-var params = {
-  host: '192.168.1.1',
-  port: 23,
-  username: "admin",
-  password: "admin",
-  shellPrompt: '#',
-  timeout: 2500,
-  debug: true
-};
+{
+  "host": "192.168.1.1",
+  "por"t: 23,
+  "username": "admin",
+  "password": "admin",
+  "interface": "ra0",
+  "shellPrompt": '#'
+}
 ```
